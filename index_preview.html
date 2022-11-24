@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <title>ToDo Workshop with TimeTracker</title>
+  <script src="https://fer-api.coderslab.pl/bootstrap/js/index.js"></script>
+  <script>new CL({
+    title: "ToDo App with TimeTracker",
+    path: ["React", "Warsztat"],
+    fontAwesome: true
+  });</script>
+</head>
+<body>
+<main id="app" class="container mb-5">
+
+  <div class="card shadow">
+    <div class="card-body">
+      <h1 class="card-title">New task</h1>
+      <form>
+        <div class="form-group">
+          <input type="text"
+                 class="form-control"
+                 name="title"
+                 placeholder="Title"/>
+        </div>
+        <div class="form-group">
+          <input type="text"
+                 class="form-control"
+                 name="description"
+                 placeholder="Description"/>
+        </div>
+        <button class="btn btn-info">
+          Add task
+          <i class="fas fa-plus-circle ml-1"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+
+  <section class="card mt-5 shadow-sm">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <div>
+        <h5>Przykładowe zadanie</h5>
+        <h6 class="card-subtitle text-muted">Domyślnie formularz ma być ukryty</h6>
+      </div>
+
+
+      <div>
+        <!--
+          Przyciski "Add operation" i "Finish" mają być widoczne
+          tylko jeżeli status zadania jest "open"
+        -->
+        <button class="btn btn-info btn-sm mr-2">
+          Add operation
+          <i class="fas fa-plus-circle ml-1"></i>
+        </button>
+
+        <button class="btn btn-dark btn-sm">
+          Finish
+          <i class="fas fa-archive ml-1"></i>
+        </button>
+      </div>
+    </div>
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          Domyślny wygląd operacji
+        </div>
+
+        <!-- div wyświetlany domyślnie, znika po wciśnięciu "Add time" -->
+        <div>
+          <!-- Przycisk widoczny tylko jeżeli status zadania jest "open" -->
+          <button class="btn btn-outline-success btn-sm mr-2">
+            Add time
+            <i class="fas fa-clock ml-1"></i>
+          </button>
+
+          <button class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i></button>
+        </div>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          Wygląd operacji po wciśnięciu "Add time"
+        </div>
+
+        <!-- Formularz wyświetlany po naciśnięciu "Add time", po zapisie czasu znika -->
+        <form>
+          <div class="input-group input-group-sm">
+            <input type="number"
+                   class="form-control"
+                   placeholder="Spent time in minutes"
+                   style="width: 12rem"/>
+            <div class="input-group-append">
+              <button class="btn btn-outline-success"><i class="fas fa-save"></i></button>
+              <button class="btn btn-outline-dark"><i class="fas fa-times false"></i></button>
+            </div>
+          </div>
+        </form>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          Wygląd operacji po zapisie czasu
+
+          <!-- Czas wyświetlany tylko jeżeli większy od 0    -->
+          <span class="badge badge-success badge-pill ml-2">
+            2h 15m
+          </span>
+        </div>
+
+        <!-- div wyświetlany domyślnie, znika po wciśnięciu "Add time" -->
+        <div>
+          <!-- Przycisk widoczny tylko jeżeli status zadania jest "open" -->
+          <button class="btn btn-outline-success btn-sm mr-2">
+            Add time
+            <i class="fas fa-clock ml-1"></i>
+          </button>
+
+          <button class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i></button>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+
+
+
+  <section class="card mt-5 shadow-sm">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <div>
+        <h5>Drugie przykładowe zadanie</h5>
+        <h6 class="card-subtitle text-muted">Widok z otwartym formularzem</h6>
+      </div>
+
+
+      <div>
+        <!--
+          Przyciski "Add operation" i "Finish" mają być widoczne
+          tylko jeżeli status zadania jest "open"
+        -->
+        <button class="btn btn-info btn-sm mr-2">
+          Add operation
+          <i class="fas fa-plus-circle ml-1"></i>
+        </button>
+
+        <button class="btn btn-dark btn-sm">
+          Finish
+          <i class="fas fa-archive ml-1"></i>
+        </button>
+
+
+        <!--
+          Przycisk usuwania ma być widoczny tylko
+          jeżeli nie ma żadnych operacji w zadaniu
+        -->
+        <button class="btn btn-outline-danger btn-sm ml-2">
+          <i class="fas fa-trash false"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <form>
+        <div class="input-group">
+          <input type="text"
+                 class="form-control"
+                 placeholder="Operation description"/>
+
+          <div class="input-group-append">
+            <button class="btn btn-info">
+              Add
+              <i class="fas fa-plus-circle ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <ul class="list-group list-group-flush">
+    </ul>
+  </section>
+
+
+
+
+  <section class="card mt-5 shadow-sm">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <div>
+        <h5>Trzecie przykładowe zadanie</h5>
+        <h6 class="card-subtitle text-muted">Widok zadania po wciśnięciu Finish</h6>
+      </div>
+    </div>
+
+
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          Operacja 1
+        </div>
+
+        <div>
+          <button class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i></button>
+        </div>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          Operacja 2
+          <span class="badge badge-success badge-pill ml-2">
+            0h 35m
+          </span>
+        </div>
+
+        <div>
+          <button class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i></button>
+        </div>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          Operacja 3
+          <span class="badge badge-success badge-pill ml-2">
+            2h 15m
+          </span>
+        </div>
+
+        <div>
+          <button class="btn btn-outline-danger btn-sm"><i class="fas fa-trash"></i></button>
+        </div>
+      </li>
+    </ul>
+  </section>
+</main>
+
+</body>
+</html>
