@@ -71,3 +71,24 @@ export const updateOperation = (id, operation, successCallback) => {
         })
         .catch(err => console.log(err));
 };
+
+/**
+ * Remove operation
+ * @param {string} id - ID of operation
+ * @param {function} successCallback - Function that is run in success case
+ */
+export const removeOperation = (id, successCallback) => {
+    fetch(`${API_URL}/operations/${id}`, {
+        headers: {
+            "Authorization": API_KEY
+        },
+        method: "DELETE"
+    })
+        .then(r => r.json())
+        .then(data => {
+            if (data.error === false && typeof successCallback === "function") {
+                successCallback();
+            }
+        })
+        .catch(err => console.log(err));
+};
