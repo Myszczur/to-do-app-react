@@ -5,22 +5,43 @@ import {API_KEY, API_URL} from "./constants";
  * @param {string} id - ID of task
  * @param {function} successCallback - Function that saves incoming data
  */
-export const getOperations = async (id, successCallback) => {
-    try {
-        const response = await fetch(`${API_URL}/tasks/${id}/operations`, {
-            headers: {
-                Authorization: API_KEY,
-            },
-        });
-
-        const data = await response.json();
-
-        if (data.error || typeof successCallback !== "function") {
-            throw new Error("Masz Errora!");
+export const getOperations = (id, successCallback) => {
+    fetch(`${API_URL}/tasks/${id}/operations`, {
+        headers: {
+            "Authorization": API_KEY
         }
+    })
+        .then(r => r.json())
+        .then(data => {
+            if (data.error === false && typeof successCallback === "function") {
+                successCallback(data.data);
+            }
+        })
+        .catch(err => console.log(err));
+};
 
-        successCallback(data.data);
-    } catch (err) {
-        console.log(err);
-    }
+/**
+ * Create operation
+ * @param {string} id - ID of task
+ * @param {Object} operation - Complete object with operation details
+ * @param {string} operation.description - Operation description
+ * @param {number} operation.timeSpent - Operation time spent value
+ * @param {function} successCallback - Function that saves incoming data
+ */
+export const createOperation = (id, operation, successCallback) => {
+    fetch(`${API_URL}/tasks/${id}/operations`, {
+        headers: {
+            "Authorization": API_KEY,
+            "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(operation)
+    })
+        .then(r => r.json())
+        .then(data => {
+            if (data.error === false && typeof successCallback === "function") {
+                successCallback(data.data);
+            }
+        })
+        .catch(err => console.log(err));
 };
