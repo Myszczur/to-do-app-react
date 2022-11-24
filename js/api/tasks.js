@@ -26,7 +26,7 @@ export const getTasks = async (successCallback) => {
 
 /**
  * Save task (create or update)
- * @param {Object} task - Complete object with task details
+ * @param {{description: string, title: string, status: (url?: (string | URL), target?: string, features?: string) => (WindowProxy | null)}} task - Complete object with task details
  * @param {string} task.title - Task title
  * @param {string} task.description - Task description
  * @param {string} task.status - Task status (open/closed)

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {createTask} from "../api/tasks";
 import Button from "./Button";
 
-const NewTask = (newTask) => {
+const NewTask = (onNewTask) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 

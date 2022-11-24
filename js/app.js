@@ -2,12 +2,20 @@ import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import NewTask from "./components/NewTask";
 import {getTasks} from "./api/tasks";
+import Task from "./components/Task";
 
 function App() {
     const [task, setTask] = useState([]);
 
     useEffect(() => {
-        getTasks(setTask);
+        /**
+         * After component mount fetch all tasks from API
+         * @function getTasks - API function
+         */
+        getTasks(setTask)
+            .then(r => {
+                console.log(r)
+            });
     }, []);
 
     const addNewTask = (task) => {
@@ -16,9 +24,16 @@ function App() {
         });
     }
 
+    const handleRemoveTask = (id) => {
+        setTask(prevState => prevState.filter(task => task.id !== id));
+    }
+
     return (
         <>
-            <NewTask newTask={addNewTask}/>
+            <NewTask onNewTask={addNewTask}/>
+            {task.map((task => {
+                return <Task key={task.id} {...task} onRemoveTask={handleRemoveTask}/>;
+            }))}
         </>
     );
 }
