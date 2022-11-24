@@ -1,12 +1,13 @@
 import {API_KEY, API_URL} from "./constants";
 
 /**
- * Fetch all tasks
+ * Fetch all operations
+ * @param {string} id - ID of task
  * @param {function} successCallback - Function that saves incoming data
  */
-export const getTasks = async (successCallback) => {
+export const getOperations = async (id, successCallback) => {
     try {
-        const response = await fetch(`${API_URL}/tasks`, {
+        const response = await fetch(`${API_URL}/tasks/${id}/operations`, {
             headers: {
                 Authorization: API_KEY,
             },
