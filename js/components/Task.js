@@ -7,6 +7,18 @@ const Task = ({title, description, id, status: _status, onRemoveTask}) => {
     const [operations, setOperations] = useState([]);
     const [operation, setOperation] = useState(false);
 
+    const handleFinish = () => {
+
+    }
+
+    const toggleOperation = () => {
+
+    }
+
+    const handleRemove = () => {
+
+    }
+
     return (
         <>
             <section className="card mt-5 shadow-sm">
@@ -21,7 +33,7 @@ const Task = ({title, description, id, status: _status, onRemoveTask}) => {
                                 <Button icon="fas fa-plus-circle"
                                         color="info"
                                         small
-                                        onClick={toggleOperationForm}
+                                        onClick={toggleOperation}
                                         className="mr-2">
                                     Add operation
                                 </Button>
