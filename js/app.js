@@ -1,10 +1,15 @@
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
+import NewTask from "./components/NewTask";
 
 function App() {
     const [task, setTask] = useState([]);
 
-    return <h1>Hello World</h1>
+    return (
+        <>
+            <NewTask/>
+        </>
+    );
 }
 
 ReactDOM.render(<App/>, document.querySelector("#app"));
