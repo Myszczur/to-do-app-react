@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import {createTask} from "../api/tasks";
+import Button from "./Button";
 
-const NewTask = () => {
+const NewTask = (newTask) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+
 
     const addNewTaskHandle = (e) => {
         e.preventDefault();
@@ -11,10 +13,9 @@ const NewTask = () => {
             title,
             description,
             status: open
-        }
+        };
 
-        createTask(task,);
-
+        createTask(task, newTask);
     }
 
     return (
@@ -39,11 +40,10 @@ const NewTask = () => {
                                    value={description}
                                    onChange={e => setDescription(e.target.value)}/>
                         </div>
-                        {/*<Button color={"info"} icon={"fas fa-plus-circle"}>Add task</Button>*/}
+                        <Button color={"info"} icon={"fas fa-plus-circle"}>Add task</Button>
                     </form>
                 </div>
             </div>
-
         </>
     );
 };
