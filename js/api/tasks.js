@@ -77,3 +77,23 @@ export const updateTask = (id, task, successCallback) => {
         .catch(err => console.log(err));
 };
 
+/**
+ * Remove task
+ * @param {string} id - ID of task
+ * @param {function} successCallback - Function runs in success case
+ */
+export const removeTask = (id, successCallback) => {
+    fetch(`${API_URL}/tasks/${id}`, {
+        headers: {
+            "Authorization": API_KEY
+        },
+        method: "DELETE"
+    })
+        .then(r => r.json())
+        .then(data => {
+            if (data.error === false && typeof successCallback === "function") {
+                successCallback();
+            }
+        })
+        .catch(err => console.log(err));
+};
