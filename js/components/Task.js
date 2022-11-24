@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Operations from "./Operations";
 import Button from "./Button";
 
 const Task = ({title, description, id, status: _status, onRemoveTask}) => {
+    const [status, setStatus] = useState(_status);
+    const [operations, setOperations] = useState([]);
+    const [operation, setOperation] = useState(false);
 
     return (
         <>
