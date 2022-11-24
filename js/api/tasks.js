@@ -50,3 +50,30 @@ export const createTask = (task, successCallback) => {
         .catch(err => console.log(err));
 };
 
+/**
+ * Update task
+ * @param {string} id - ID of task
+ * @param {Object} task - Complete object with task details
+ * @param {string} task.title - Task title
+ * @param {string} task.description - Task description
+ * @param {string} task.status - Task status (open/closed)
+ * @param {function} successCallback - Function that saves incoming data
+ */
+export const updateTask = (id, task, successCallback) => {
+    fetch(`${API_URL}/tasks/${id}`, {
+        headers: {
+            "Authorization": API_KEY,
+            "Content-Type": "application/json",
+        },
+        method: "PUT",
+        body: JSON.stringify(task)
+    })
+        .then(r => r.json())
+        .then(data => {
+            if (data.error === false && typeof successCallback === "function") {
+                successCallback(data.data);
+            }
+        })
+        .catch(err => console.log(err));
+};
+
