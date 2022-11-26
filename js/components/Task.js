@@ -1,22 +1,37 @@
 import React, {useEffect, useState} from 'react';
 import Operations from "./Operations";
 import Button from "./Button";
+import {getOperations} from "../api/operations";
+import {removeTask, updateTask} from "../api/tasks";
 
 const Task = ({title, description, id, status: _status, onRemoveTask}) => {
     const [status, setStatus] = useState(_status);
     const [operations, setOperations] = useState([]);
     const [operation, setOperation] = useState(false);
 
-    const handleFinish = () => {
+    useEffect(() => {
+        getOperations(id, setOperations);
+    }, []);
 
+    const handleFinish = () => {
+        const task = {
+            title,
+            description,
+            status: 'closed'
+        }
+        updateTask(id, task, () => {
+            setStatus('closed')
+        });
     }
 
     const toggleOperation = () => {
-
+        setOperation(prevState => !prevState);
     }
 
     const handleRemove = () => {
-
+        removeTask(id, () => {
+            onRemoveTask(id);
+        });
     }
 
     return (
@@ -53,8 +68,8 @@ const Task = ({title, description, id, status: _status, onRemoveTask}) => {
                 </div>
 
                 <Operations taskID={id}
-                            form={operationForm}
-                            setForm={setOperationForm}
+                            form={operation}
+                            setForm={setOperation}
                             operations={operations}
                             setOperations={setOperations}
                             status={status}/>

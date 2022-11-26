@@ -2,20 +2,20 @@ import React, {useState} from 'react';
 import {createTask} from "../api/tasks";
 import Button from "./Button";
 
-const NewTask = (onNewTask) => {
+const NewTask = ({onNewTask}) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 
-
     const addNewTaskHandle = (e) => {
         e.preventDefault();
+
         const task = {
             title,
             description,
-            status: open
+            status: "open"
         };
 
-        createTask(task, newTask);
+        createTask(task, onNewTask);
     }
 
     return (

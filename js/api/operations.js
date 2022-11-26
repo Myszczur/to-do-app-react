@@ -47,8 +47,8 @@ export const createOperation = (id, operation, successCallback) => {
 };
 
 /**
- * Update operation (create or update)
- * @param {string} id - ID of operation
+ * Update operation
+ * @param {string} id - ID of task
  * @param {Object} operation - Complete object with operation details
  * @param {string} operation.description - Operation description
  * @param {number} operation.timeSpent - Operation time spent value
