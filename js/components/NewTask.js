@@ -6,7 +6,6 @@ const NewTask = ({onNewTask}) => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 
-
     const addNewTaskHandle = (e) => {
         e.preventDefault();
 

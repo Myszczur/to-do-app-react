@@ -46,7 +46,14 @@ export const createOperation = (id, operation, successCallback) => {
         .catch(err => console.log(err));
 };
 
-
+/**
+ * Update operation
+ * @param {string} id - ID of task
+ * @param {Object} operation - Complete object with operation details
+ * @param {string} operation.description - Operation description
+ * @param {number} operation.timeSpent - Operation time spent value
+ * @param {function} successCallback - Function that saves incoming data
+ */
 export const updateOperation = (id, operation, successCallback) => {
     fetch(`${API_URL}/operations/${id}`, {
         headers: {
