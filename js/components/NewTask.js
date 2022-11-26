@@ -15,7 +15,7 @@ const NewTask = (onNewTask) => {
             status: open
         };
 
-        createTask(task, newTask);
+        createTask(task, onNewTask);
     }
 
     return (
