@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Button from "./Button";
 import Operation from "./Operation";
-import {createOperation} from "../api/operations";
+import { createOperation } from "../api/operations";
 
-const Operations = ({taskID, form, setForm, operations, setOperations, status}) => {
+const Operations = ({ taskID, form, setForm, operations, setOperations, status }) => {
     //operation Description
     const [operation, setOperation] = useState("");
 
@@ -34,10 +34,10 @@ const Operations = ({taskID, form, setForm, operations, setOperations, status}) 
                     <form onSubmit={newOperation}>
                         <div className="input-group">
                             <input type="text"
-                                   className="form-control"
-                                   placeholder="Operation description"
-                                   value={operation}
-                                   onChange={e => setOperation(e.target.value)}/>
+                                className="form-control"
+                                placeholder="Operation description"
+                                value={operation}
+                                onChange={e => setOperation(e.target.value)} />
 
                             <div className="input-group-append">
                                 <Button color={"info"} icon="fas fa-plus-circle">Add</Button>
@@ -49,7 +49,7 @@ const Operations = ({taskID, form, setForm, operations, setOperations, status}) 
             <ul className="list-group list-group-flush">
                 {operations.map(operation => (
                     <Operation key={operation.id} {...operation} onRemoveOperation={removeOperation}
-                               status={status}/>
+                        status={status} />
                 ))}
             </ul>
         </>
