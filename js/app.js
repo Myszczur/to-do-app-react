@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import NewTask from "./components/NewTask";
-import {getTasks} from "./api/tasks";
+import { getTasks } from "./api/tasks";
 import Task from "./components/Task";
 
 function App() {
@@ -30,12 +30,12 @@ function App() {
 
     return (
         <>
-            <NewTask onNewTask={addNewTask}/>
+            <NewTask onNewTask={addNewTask} />
             {task.map((task => {
-                return <Task key={task.id} {...task} onRemoveTask={handleRemoveTask}/>;
+                return <Task key={task.id} {...task} onRemoveTask={handleRemoveTask} />;
             }))}
         </>
     );
 }
 
-ReactDOM.render(<App/>, document.querySelector("#app"));
+ReactDOM.render(<App />, document.querySelector("#app"));
