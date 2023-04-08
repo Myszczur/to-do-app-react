@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = ({children, color = "primary", className = false, small = false, outline = false, icon, onClick}) => {
+const Button = ({ children, color = "primary", className = false, small = false, outline = false, icon, onClick }) => {
 
     const btnClasses = [
         "btn",
@@ -18,7 +18,7 @@ const Button = ({children, color = "primary", className = false, small = false, 
         <>
             <button className={btnClasses} type="submit" onClick={onClick}>
                 {children}
-                {icon && <i className={iconClasses}/>}
+                {icon && <i className={iconClasses} />}
             </button>
         </>
     );

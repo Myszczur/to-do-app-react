@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Button from "./Button";
-import {removeOperation, updateOperation} from "../api/operations";
+import { removeOperation, updateOperation } from "../api/operations";
 
-const Operation = ({description, id, onRemoveOperation, timeSpent: _timeSpent, status}) => {
+const Operation = ({ description, id, onRemoveOperation, timeSpent: _timeSpent, status }) => {
     const [timeSpentForm, setTimeSpentForm] = useState(false);
     const [timeSpent, setTimeSpent] = useState(_timeSpent);
     const [timeSpentInput, setTimeSpentInput] = useState("");
@@ -39,8 +39,8 @@ const Operation = ({description, id, onRemoveOperation, timeSpent: _timeSpent, s
                     {description}
                     {timeSpent > 0 && (
                         <span className="badge badge-success badge-pill ml-2">
-            {hours}h {minutes}m
-          </span>
+                            {hours}h {minutes}m
+                        </span>
                     )}
                 </div>
 
@@ -48,15 +48,15 @@ const Operation = ({description, id, onRemoveOperation, timeSpent: _timeSpent, s
                     <form onSubmit={handleTimeSave}>
                         <div className="input-group input-group-sm">
                             <input type="number"
-                                   className="form-control"
-                                   placeholder="Spent time in minutes"
-                                   value={timeSpentInput}
-                                   style={{width: "12rem"}}
-                                   onChange={e => setTimeSpentInput(e.target.value)}/>
+                                className="form-control"
+                                placeholder="Spent time in minutes"
+                                value={timeSpentInput}
+                                style={{ width: "12rem" }}
+                                onChange={e => setTimeSpentInput(e.target.value)} />
                             <div className="input-group-append">
-                                <Button color={"success"} outline icon={"fas fa-save"}/>
+                                <Button color={"success"} outline icon={"fas fa-save"} />
                                 <Button color={"dark"} outline icon={"fas fa-times"}
-                                        onClick={() => setTimeSpentForm(false)}/>
+                                    onClick={() => setTimeSpentForm(false)} />
                             </div>
                         </div>
                     </form>
@@ -75,7 +75,7 @@ const Operation = ({description, id, onRemoveOperation, timeSpent: _timeSpent, s
                                 Add time
                             </Button>
                         )}
-                        <Button icon={"fas fa-trash"} color={"danger"} outline small onClick={handleRemove}/>
+                        <Button icon={"fas fa-trash"} color={"danger"} outline small onClick={handleRemove} />
                     </div>
                 )}
             </li>
